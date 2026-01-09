@@ -84,7 +84,8 @@ app.post("/login", async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).json({ message: "Login error" });
+    console.error(err);
+    res.status(500).json({ message: "Register error",error : err.message });
   }
 });
 
