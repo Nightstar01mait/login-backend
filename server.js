@@ -1,3 +1,4 @@
+require("dotenv").config();  
 // ===== REQUIRED PACKAGES =====
 const express = require("express");
 const mongoose = require("mongoose");
@@ -10,6 +11,9 @@ const User = require("./models/User");
 // ===== APP SETUP =====
 const app = express();
 app.use(express.json());
+
+// DEBUG (temporary)
+console.log("MONGO_URI FROM ENV =", process.env.MONGO_URI);
 
 // ===== JWT SECRET =====
 const JWT_SECRET = "process.env.JWT_SECRET"; // baad me .env me rakhenge
