@@ -1,9 +1,12 @@
 // ===== REQUIRED PACKAGES =====
 const authMiddleware = require("./middleware/auth");
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+
 
 // ===== IMPORT USER MODEL =====
 const User = require("./models/User");
