@@ -1,4 +1,5 @@
 // ===== REQUIRED PACKAGES =====
+const authMiddleware = require("./middleware/auth");
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
@@ -28,8 +29,13 @@ mongoose
   });
 
 // ===== ROOT ROUTE =====
-app.get("/", (req, res) => {
-  res.send("Server is running ✅");
+app.get("/profile", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Profile fetch error" });
+  }
 });
 
 // ================= REGISTER API =================
