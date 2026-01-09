@@ -12,7 +12,9 @@ const jwt = require("jsonwebtoken");
 const User = require("./models/User");
 
 // ===== APP SETUP =====
+
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // ===== ENV VALUES (Render se) =====
